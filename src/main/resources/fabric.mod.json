@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"com.stalemated.mcdloretoggler.MCDLoreToggler"
+		],
+		"modmenu": [
+			"com.stalemated.mcdloretoggler.compat.ModMenuIntegration"
 		]
 	},
 	"mixins": [
