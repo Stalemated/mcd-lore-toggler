@@ -13,7 +13,12 @@
 	},
 	"license": "MIT",
 	"icon": "assets/mcd-lore-toggler/icon.png",
-	"environment": "client",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.stalemated.mcdloretoggler.MCDLoreToggler"
+		]
+	},
 	"mixins": [
 		"mcd-lore-toggler.client.mixins.json"
 	],

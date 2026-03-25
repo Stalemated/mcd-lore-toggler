@@ -1,10 +1,10 @@
 package com.stalemated.mcdloretoggler.mixin.client;
 
 import chronosacaria.mcda.items.ArmorSetItem;
+import com.stalemated.mcdloretoggler.config.MCDLoreTogglerConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import com.stalemated.mcdloretoggler.config.MCDLoreTogglerConfig;
 
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
@@ -27,13 +27,9 @@ public class ArmorSetItemMixin {
             }
 
             if (isArmorEffect) {
-                if (!MCDLoreTogglerConfig.showMCDAEffectLore) {
-                    return false;
-                }
+                if (!MCDLoreTogglerConfig.showMCDAEffectLore) return false;
             } else {
-                if (!MCDLoreTogglerConfig.showMCDAFlavorLore) {
-                    return false;
-                }
+                if (!MCDLoreTogglerConfig.showMCDAFlavorLore) return false;
             }
         }
 

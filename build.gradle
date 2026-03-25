@@ -51,6 +51,7 @@ dependencies {
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}")
 	modImplementation "curse.maven:mcdw-407311:${project.mcdw_id}"
 	modImplementation "curse.maven:mcda-426206:${project.mcda_id}"
 }
