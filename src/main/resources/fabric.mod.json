@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "mcd-lore-toggler",
+	"version": "${version}",
+	"name": "MCD-Lore-Toggler",
+	"description": "Adds the ability to toggle MCDW's and MCDA's flavor and effect lore.",
+	"authors": [
+		"Stalemated"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "assets/mcd-lore-toggler/icon.png",
+	"environment": "client",
+	"mixins": [
+		"mcd-lore-toggler.client.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
