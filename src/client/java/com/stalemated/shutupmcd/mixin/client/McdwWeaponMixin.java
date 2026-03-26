@@ -1,4 +1,4 @@
-package com.stalemated.mcdloretoggler.mixin.client;
+package com.stalemated.shutupmcd.mixin.client;
 
 import chronosacaria.mcdw.api.util.CleanlinessHelper;
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
 import java.util.List;
-import com.stalemated.mcdloretoggler.config.MCDLoreTogglerConfig;
+import com.stalemated.shutupmcd.config.ShutUpMCDConfig;
 
 @Mixin(value = {CleanlinessHelper.class})
 public class McdwWeaponMixin {
@@ -25,13 +25,13 @@ public class McdwWeaponMixin {
             if (text.getContent() instanceof TranslatableTextContent translatable) {
                 isWeaponEffect = translatable.getKey().contentEquals("tooltip_note_item.mcdw.dualwield") || translatable.getKey().contains("tooltip_note_item.mcdw.longbow") || translatable.getKey().contentEquals("tooltip_note_item.mcdw.shortbow");
 
-                if (translatable.getKey().contentEquals("tooltip_info_item.mcdw.gap") && !MCDLoreTogglerConfig.showMCDWEffectLore) return false;
+                if (translatable.getKey().contentEquals("tooltip_info_item.mcdw.gap") && !ShutUpMCDConfig.showMCDWEffectLore) return false;
             }
 
             if (isWeaponEffect) {
-                if (!MCDLoreTogglerConfig.showMCDWEffectLore) return false;
+                if (!ShutUpMCDConfig.showMCDWEffectLore) return false;
             } else {
-                if (!MCDLoreTogglerConfig.showMCDWFlavorLore) return false;
+                if (!ShutUpMCDConfig.showMCDWFlavorLore) return false;
             }
         }
 

@@ -1,7 +1,7 @@
-package com.stalemated.mcdloretoggler.mixin.client;
+package com.stalemated.shutupmcd.mixin.client;
 
 import chronosacaria.mcda.items.ArmorSetItem;
-import com.stalemated.mcdloretoggler.config.MCDLoreTogglerConfig;
+import com.stalemated.shutupmcd.config.ShutUpMCDConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -27,9 +27,9 @@ public class ArmorSetItemMixin {
             }
 
             if (isArmorEffect) {
-                if (!MCDLoreTogglerConfig.showMCDAEffectLore) return false;
+                if (!ShutUpMCDConfig.showMCDAEffectLore) return false;
             } else {
-                if (!MCDLoreTogglerConfig.showMCDAFlavorLore) return false;
+                if (!ShutUpMCDConfig.showMCDAFlavorLore) return false;
             }
         }
 

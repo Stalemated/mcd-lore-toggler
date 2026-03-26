@@ -1,4 +1,4 @@
-package com.stalemated.mcdloretoggler.config;
+package com.stalemated.shutupmcd.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,16 +7,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import static com.stalemated.mcdloretoggler.MCDLoreToggler.LOGGER;
+import static com.stalemated.shutupmcd.ShutUpMCD.LOGGER;
 
-public class MCDLoreTogglerConfig {
+public class ShutUpMCDConfig {
     // Default values
     public static boolean showMCDAFlavorLore = true;
     public static boolean showMCDAEffectLore = true;
     public static boolean showMCDWFlavorLore = true;
     public static boolean showMCDWEffectLore = true;
 
-    private static final File CONFIG_FILE = new File(FabricLoader.getInstance().getConfigDir().toFile(), "mcd_lore_toggler.json");
+    private static final File CONFIG_FILE = new File(FabricLoader.getInstance().getConfigDir().toFile(), "shut_up_mcd.json");
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static void load() {
@@ -52,9 +52,9 @@ public class MCDLoreTogglerConfig {
     }
 
     private static class ConfigData {
-        boolean showMCDAFlavorLore = MCDLoreTogglerConfig.showMCDAFlavorLore;
-        boolean showMCDAEffectLore = MCDLoreTogglerConfig.showMCDAEffectLore;
-        boolean showMCDWFlavorLore = MCDLoreTogglerConfig.showMCDWFlavorLore;
-        boolean showMCDWEffectLore = MCDLoreTogglerConfig.showMCDWEffectLore;
+        boolean showMCDAFlavorLore = ShutUpMCDConfig.showMCDAFlavorLore;
+        boolean showMCDAEffectLore = ShutUpMCDConfig.showMCDAEffectLore;
+        boolean showMCDWFlavorLore = ShutUpMCDConfig.showMCDWFlavorLore;
+        boolean showMCDWEffectLore = ShutUpMCDConfig.showMCDWEffectLore;
     }
 }

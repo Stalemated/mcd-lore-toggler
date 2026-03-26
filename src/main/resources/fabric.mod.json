@@ -1,29 +1,29 @@
 {
 	"schemaVersion": 1,
-	"id": "mcd-lore-toggler",
+	"id": "shut-up-mcd",
 	"version": "${version}",
-	"name": "MC Dungeons Lore Toggler",
+	"name": "Shut Up MC Dungeons",
 	"description": "Adds the ability to toggle MCDW's and MCDA's flavor and effect lore.",
 	"authors": [
 		"Stalemated"
 	],
 	"contact": {
 		"homepage": "",
-		"sources": "https://github.com/Stalemated/mcd-lore-toggler"
+		"sources": "https://github.com/Stalemated/shut-up-mc-dungeons"
 	},
 	"license": "MIT",
-	"icon": "assets/mcd-lore-toggler/icon.jpg",
+	"icon": "assets/shut-up-mcd/icon.jpg",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.stalemated.mcdloretoggler.MCDLoreToggler"
+			"com.stalemated.shutupmcd.ShutUpMCD"
 		],
 		"modmenu": [
-			"com.stalemated.mcdloretoggler.compat.ModMenuIntegration"
+			"com.stalemated.shutupmcd.compat.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"mcd-lore-toggler.client.mixins.json"
+		"shut-up-mcd.client.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",

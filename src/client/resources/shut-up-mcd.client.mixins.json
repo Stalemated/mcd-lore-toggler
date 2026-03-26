@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.stalemated.mcdloretoggler.mixin.client",
+	"package": "com.stalemated.shutupmcd.mixin.client",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
 		"ArmorSetItemMixin",

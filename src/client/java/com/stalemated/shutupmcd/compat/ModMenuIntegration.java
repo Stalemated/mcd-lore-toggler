@@ -1,6 +1,6 @@
-package com.stalemated.mcdloretoggler.compat;
+package com.stalemated.shutupmcd.compat;
 
-import com.stalemated.mcdloretoggler.config.MCDLoreTogglerConfig;
+import com.stalemated.shutupmcd.config.ShutUpMCDConfig;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -18,7 +18,7 @@ public class ModMenuIntegration implements ModMenuApi {
                     .setParentScreen(parent)
                     .setTitle(Text.literal("MC Dungeons Lore Toggler Config"));
 
-            builder.setSavingRunnable(MCDLoreTogglerConfig::save);
+            builder.setSavingRunnable(ShutUpMCDConfig::save);
 
             ConfigCategory mcda = builder.getOrCreateCategory(Text.literal("MC Dungeons Armors"));
             ConfigCategory mcdw = builder.getOrCreateCategory(Text.literal("MC Dungeons Weapons"));
@@ -26,27 +26,27 @@ public class ModMenuIntegration implements ModMenuApi {
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
             // MCDA Flavor
-            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Flavor Lore"), MCDLoreTogglerConfig.showMCDAFlavorLore)
+            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Flavor Lore"), ShutUpMCDConfig.showMCDAFlavorLore)
                     .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> MCDLoreTogglerConfig.showMCDAFlavorLore = newValue)
+                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAFlavorLore = newValue)
                     .build());
 
             // MCDA Effects
-            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Effect Lore"), MCDLoreTogglerConfig.showMCDAEffectLore)
+            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Effect Lore"), ShutUpMCDConfig.showMCDAEffectLore)
                     .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> MCDLoreTogglerConfig.showMCDAEffectLore = newValue)
+                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAEffectLore = newValue)
                     .build());
 
             // MCDW Flavor
-            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Flavor Lore"), MCDLoreTogglerConfig.showMCDWFlavorLore)
+            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Flavor Lore"), ShutUpMCDConfig.showMCDWFlavorLore)
                     .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> MCDLoreTogglerConfig.showMCDWFlavorLore = newValue)
+                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWFlavorLore = newValue)
                     .build());
 
             // MCDW Effects
-            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Effect Lore"), MCDLoreTogglerConfig.showMCDWEffectLore)
+            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Effect Lore"), ShutUpMCDConfig.showMCDWEffectLore)
                     .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> MCDLoreTogglerConfig.showMCDWEffectLore = newValue)
+                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWEffectLore = newValue)
                     .build());
 
             return builder.build();
