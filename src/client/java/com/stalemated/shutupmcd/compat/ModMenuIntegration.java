@@ -6,6 +6,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Text;
 
 public class ModMenuIntegration implements ModMenuApi {
@@ -19,35 +20,47 @@ public class ModMenuIntegration implements ModMenuApi {
                     .setTitle(Text.literal("Shut Up MCD Config"));
 
             builder.setSavingRunnable(ShutUpMCDConfig::save);
-
-            ConfigCategory mcda = builder.getOrCreateCategory(Text.literal("MCD Armors"));
-            ConfigCategory mcdw = builder.getOrCreateCategory(Text.literal("MCD Weapons"));
-
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-            // MCDA Flavor
-            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Flavor Lore"), ShutUpMCDConfig.showMCDAFlavorLore)
-                    .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAFlavorLore = newValue)
-                    .build());
+            boolean mcdaLoaded = FabricLoader.getInstance().isModLoaded("mcda");
+            boolean mcdwLoaded = FabricLoader.getInstance().isModLoaded("mcdw");
 
-            // MCDA Effects
-            mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Effect Lore"), ShutUpMCDConfig.showMCDAEffectLore)
-                    .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAEffectLore = newValue)
-                    .build());
+            if (mcdaLoaded) {
+                ConfigCategory mcda = builder.getOrCreateCategory(Text.literal("MCD Armors"));
 
-            // MCDW Flavor
-            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Flavor Lore"), ShutUpMCDConfig.showMCDWFlavorLore)
-                    .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWFlavorLore = newValue)
-                    .build());
+                // MCDA Flavor
+                mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Flavor Lore"), ShutUpMCDConfig.showMCDAFlavorLore)
+                        .setDefaultValue(true)
+                        .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAFlavorLore = newValue)
+                        .build());
 
-            // MCDW Effects
-            mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Effect Lore"), ShutUpMCDConfig.showMCDWEffectLore)
-                    .setDefaultValue(true)
-                    .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWEffectLore = newValue)
-                    .build());
+                // MCDA Effects
+                mcda.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Armor Effect Lore"), ShutUpMCDConfig.showMCDAEffectLore)
+                        .setDefaultValue(true)
+                        .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDAEffectLore = newValue)
+                        .build());
+            }
+
+            if (mcdwLoaded) {
+                ConfigCategory mcdw = builder.getOrCreateCategory(Text.literal("MCD Weapons"));
+
+                // MCDW Flavor
+                mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Flavor Lore"), ShutUpMCDConfig.showMCDWFlavorLore)
+                        .setDefaultValue(true)
+                        .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWFlavorLore = newValue)
+                        .build());
+
+                // MCDW Effects
+                mcdw.addEntry(entryBuilder.startBooleanToggle(Text.literal("Show Weapon Effect Lore"), ShutUpMCDConfig.showMCDWEffectLore)
+                        .setDefaultValue(true)
+                        .setSaveConsumer(newValue -> ShutUpMCDConfig.showMCDWEffectLore = newValue)
+                        .build());
+            }
+
+            // Fallback
+            if (!mcdaLoaded && !mcdwLoaded) {
+                builder.getOrCreateCategory(Text.literal("No supported mods loaded"));
+            }
 
             return builder.build();
         };

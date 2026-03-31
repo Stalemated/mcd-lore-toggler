@@ -2,6 +2,7 @@
 	"required": true,
 	"package": "com.stalemated.shutupmcd.mixin.client",
 	"compatibilityLevel": "JAVA_17",
+	"plugin": "com.stalemated.shutupmcd.MixinPlugin",
 	"client": [
 		"ArmorSetItemMixin",
 		"McdwWeaponMixin"

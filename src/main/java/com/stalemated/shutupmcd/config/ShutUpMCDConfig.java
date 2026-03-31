@@ -24,10 +24,14 @@ public class ShutUpMCDConfig {
             try (FileReader reader = new FileReader(CONFIG_FILE)) {
                 ConfigData data = GSON.fromJson(reader, ConfigData.class);
                 if (data != null) {
-                    showMCDAFlavorLore = data.showMCDAFlavorLore;
-                    showMCDAEffectLore = data.showMCDAEffectLore;
-                    showMCDWFlavorLore = data.showMCDWFlavorLore;
-                    showMCDWEffectLore = data.showMCDWEffectLore;
+                    if (FabricLoader.getInstance().isModLoaded("mcda")) {
+                        showMCDAFlavorLore = data.showMCDAFlavorLore;
+                        showMCDAEffectLore = data.showMCDAEffectLore;
+                    }
+                    if (FabricLoader.getInstance().isModLoaded("mcdw")) {
+                        showMCDWFlavorLore = data.showMCDWFlavorLore;
+                        showMCDWEffectLore = data.showMCDWEffectLore;
+                    }
                 }
             } catch (IOException e) {
                 LOGGER.error("Config could not be loaded: ", e);
@@ -39,10 +43,14 @@ public class ShutUpMCDConfig {
 
     public static void save() {
         ConfigData data = new ConfigData();
-        data.showMCDAFlavorLore = showMCDAFlavorLore;
-        data.showMCDAEffectLore = showMCDAEffectLore;
-        data.showMCDWFlavorLore = showMCDWFlavorLore;
-        data.showMCDWEffectLore = showMCDWEffectLore;
+        if (FabricLoader.getInstance().isModLoaded("mcda")) {
+            data.showMCDAFlavorLore = showMCDAFlavorLore;
+            data.showMCDAEffectLore = showMCDAEffectLore;
+        }
+        if (FabricLoader.getInstance().isModLoaded("mcdw")) {
+            data.showMCDWFlavorLore = showMCDWFlavorLore;
+            data.showMCDWEffectLore = showMCDWEffectLore;
+        }
 
         try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(data, writer);
